@@ -24,8 +24,8 @@ module Google
       Route.new(from, to, options_with_defaults(options)).duration.text
     end
 
-    def self.places(keyword, language = default_language)
-      Place.find(keyword, language)
+    def self.places(keyword, options = {})
+      Place.find(keyword, options_with_defaults(options))
     end
 
     def self.place(place_id, language = default_language)
