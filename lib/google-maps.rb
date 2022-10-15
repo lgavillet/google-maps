@@ -28,8 +28,8 @@ module Google
       Place.find(keyword, options_with_defaults(options))
     end
 
-    def self.place(place_id, language = default_language)
-      PlaceDetails.find(place_id, language)
+    def self.place(place_id, options = {})
+      PlaceDetails.find(place_id, options_with_defaults(options))
     end
 
     def self.distance_matrix(from, to, options = {})
