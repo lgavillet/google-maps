@@ -15,7 +15,7 @@ module Google
         @html = highligh_keywords(data, keyword)
       end
 
-      def self.find(keyword, **options)
+      def self.find(keyword, options = {})
         args = { input: keyword }.merge(options)
         API.query(:places_service, args).predictions.map { |prediction| Place.new(prediction, keyword) }
       end
@@ -78,7 +78,7 @@ module Google
         AddressComponentsProxy.new(@data.address_components)
       end
 
-      def self.find(place_id, **options)
+      def self.find(place_id, options = {})
         args = { place_id: place_id }.merge(options)
         PlaceDetails.new(API.query(:place_details_service, args).result)
       end
